@@ -1,29 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="am">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Wallet</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Wallet Demo</title>
 <style>
-body { margin:0; font-family:Arial; background:#f2f5f8; }
-header { background:#087b45; color:white; padding:20px; text-align:center; }
-.balance { background:#087b45; color:white; padding:25px; text-align:center; border-radius:0 0 25px 25px; }
-.services { display:grid; grid-template-columns:1fr 1fr; gap:15px; padding:20px; }
-.item { background:white; padding:25px 10px; text-align:center; border-radius:15px; font-weight:bold; }
+*{box-sizing:border-box}
+body{margin:0;background:#f2f5fa;font-family:Arial,sans-serif;color:#17233b}
+header{background:#0876c9;color:white;padding:22px 18px 30px;border-radius:0 0 25px 25px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.brand{font-size:21px;font-weight:bold}
+.demo{font-size:11px;background:#ffdf35;color:#17324d;padding:6px 9px;border-radius:12px}
+.balance{margin-top:28px;font-size:14px}
+.amount{font-size:30px;font-weight:bold;margin-top:8px}
+.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:18px 12px}
+.action{background:white;border-radius:14px;padding:15px 5px;text-align:center;font-size:12px;box-shadow:0 2px 8px #0000000c;cursor:pointer}
+.icon{font-size:25px;display:block;margin-bottom:8px}
+h3{font-size:17px;margin:12px 16px}
+.list{background:white;margin:10px 14px;border-radius:14px;padding:15px}
+.item{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #eee;font-size:14px}
+.item:last-child{border:0}
+nav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:13px 3px;box-shadow:0 -2px 10px #00000010}
+nav button{border:0;background:none;color:#536174;font-size:12px}
+nav span{display:block;font-size:20px;margin-bottom:4px}
+.notice{text-align:center;color:#777;font-size:11px;padding:15px 10px 90px}
+button{cursor:pointer}
 </style>
 </head>
 <body>
-<header><h2>My Wallet</h2></header>
-<div class="balance">
-<p>Available Balance</p>
-<h1>0.00 ETB</h1>
-<p>Demo Wallet</p>
+<header>
+ <div class="top">
+  <div class="brand">My Wallet</div>
+  <div class="demo">DEMO APP</div>
+ </div>
+ <div class="balance">የእኔ ቀሪ ሂሳብ</div>
+ <div class="amount" id="balance">ETB 5,000.00</div>
+ <div style="margin-top:10px;font-size:12px">የኪስ ቦርሳ ማሳያ</div>
+</header>
+
+<div class="actions">
+ <div class="action" onclick="doAction('Deposit')"><span class="icon">➕</span>Deposit</div>
+ <div class="action" onclick="doAction('Send Money')"><span class="icon">💸</span>Send Money</div>
+ <div class="action" onclick="doAction('Airtime')"><span class="icon">📱</span>Airtime</div>
+ <div class="action" onclick="doAction('Pay Bills')"><span class="icon">🧾</span>Pay Bills</div>
+ <div class="action" onclick="doAction('Transactions')"><span class="icon">📋</span>Transactions</div>
+ <div class="action" onclick="doAction('Messages')"><span class="icon">✉️</span>Messages</div>
+ <div class="action" onclick="doAction('Notifications')"><span class="icon">🔔</span>Notifications</div>
+ <div class="action" onclick="doAction('Profile')"><span class="icon">👤</span>Profile</div>
 </div>
-<div class="services">
-<div class="item">💸 Send Money</div>
-<div class="item">📱 Airtime</div>
-<div class="item">💳 Pay Bills</div>
-<div class="item">📊 Transactions</div>
+
+<h3>የቅርብ ጊዜ እንቅስቃሴ</h3>
+<div class="list" id="transactions">
+ <div class="item"><span>🛒 Shopping</span><span>- ETB 250</span></div>
+ <div class="item"><span>💰 Deposit</span><span>+ ETB 1,000</span></div>
+ <div class="item"><span>📱 Airtime</span><span>- ETB 50</span></div>
 </div>
+
+<div class="notice">ይህ የሙከራ Demo ነው። እውነተኛ ክፍያ አያከናውንም።</div>
+
+<nav>
+ <button onclick="doAction('Home')"><span>⌂</span>Home</button>
+ <button onclick="doAction('Transactions')"><span>📋</span>History</button>
+ <button onclick="doAction('Messages')"><span>✉</span>Messages</button>
+ <button onclick="doAction('Profile')"><span>👤</span>Profile</button>
+</nav>
+
+<script>
+function doAction(name){
+ if(name==='Home'){
+  alert('Welcome to My Wallet Demo!');
+  return;
+ }
+ if(name==='Transactions'){
+  alert('የግብይት ታሪክ ማሳያ ነው።');
+  return;
+ }
+ if(name==='Messages'){
+  alert('ምንም አዲስ መልዕክት የለም።');
+  return;
+ }
+ if(name==='Notifications'){
+  alert('ምንም አዲስ ማሳወቂያ የለም።');
+  return;
+ }
+ if(name==='Profile'){
+  alert('My Wallet Demo Profile');
+  return;
+ }
+ if(name==='Deposit'){
+  alert('ይህ የDemo Deposit ሙከራ ነው።');
+  return;
+ }
+ if(name==='Send Money'){
+  alert('ይህ የDemo Send Money ሙከራ ነው። እውነተኛ ገንዘብ አይላክም።');
+  return;
+ }
+ if(name==='Airtime'){
+  alert('ይህ የDemo Airtime ሙከራ ነው።');
+  return;
+ }
+ if(name==='Pay Bills'){
+  alert('ይህ የDemo Pay Bills ሙከራ ነው።');
+ }
+}
+</script>
 </body>
 </html>
